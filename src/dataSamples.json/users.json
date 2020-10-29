@@ -1,0 +1,104 @@
+[
+    {
+        "_id": "5f970647d1e5ce1090552b41",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08192922",
+        "__v": 0,
+        "accountDetails": []
+    },
+    {
+        "_id": "5f9707128c4edd21940d5dbe",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08192922",
+        "__v": 0,
+        "accountDetails": []
+    },
+    {
+        "_id": "5f97074908eb432104b7d192",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08192922",
+        "__v": 0,
+        "accountDetails": []
+    },
+    {
+        "_id": "5f9707a4861fcd2ec8ce4365",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08192922",
+        "__v": 0,
+        "accountDetails": []
+    },
+    {
+        "_id": "5f97088a0ba0113444856ad4",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08192922",
+        "__v": 0,
+        "accountDetails": []
+    },
+    {
+        "_id": "5f9708c7e67fe92ff0e10259",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08192922",
+        "__v": 0,
+        "accountDetails": []
+    },
+    {
+        "_id": "5f970a24abedc03aa0f0a096",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08192922",
+        "__v": 0,
+        "accountDetails": []
+    },
+    {
+        "_id": "5f970aa7abedc03aa0f0a097",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08192922",
+        "__v": 0,
+        "accountDetails": []
+    },
+    {
+        "_id": "5f970c9656d5522acc712d15",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08174007780",
+        "accountDetails": [],
+        "__v": 0
+    },
+    {
+        "_id": "5f97e6aac3e34a1f64ed7a4d",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08174007780",
+        "password": "123456789",
+        "accountDetails": [],
+        "__v": 0
+    },
+    {
+        "_id": "5f97e6df5b6fc02d4ce8f484",
+        "firstname": "Gideon",
+        "lastname": "Amowogbaje",
+        "email": "amowogbajegideon@gmail.com",
+        "phone": "08174007780",
+        "password": "123456789",
+        "accountDetails": [],
+        "__v": 0
+    }
+]
+
