@@ -4,10 +4,16 @@ const mongoose = require('mongoose');
 // const { response } = require('express');
 const eWallet = require('../models/models');
 
-
-const addAccountDetail = (req, res) => {
+const userProfile = (req, res, next) => {
+    res.json({
+      message: 'You made it to the secure route',
+      user: req.user,
+      token: req.query.secret_token
+    })
+  }
+const addAccountDetail = (req, res, next) => {
     eWallet.findByIdAndUpdate(
-        { _id: req.params.UserID },
+        { _id: req.user._id },
         { accountDetails: req.body },
         // {$push: {accountDetails: req.body}},
         { new: true, useFindAndModify: false },
@@ -21,18 +27,18 @@ const addAccountDetail = (req, res) => {
 }
 
 
-const getAccountDetail = (req, res) => {
-    eWallet.findById(req.params.UserID, (err, eWallet) => {
+const getAccountDetail = (req, res, next) => {
+    eWallet.findById(req.user._id, (err, eWallet) => {
         if (err) {
             res.send(err)
         }
-        res.json(eWallet.accountDetail);
+        res.json(eWallet);
     });
 }
 
-const addNewTransaction = (req, res) => {
+const addNewTransaction = (req, res, next) => {
     eWallet.findByIdAndUpdate(
-        { _id: req.params.UserID },
+        { _id: req.user._id },
         { $push: { transactions: req.body } },
         { new: true, useFindAndModify: false },
         (err, eWallet) => {
@@ -61,6 +67,7 @@ const exportFunctions = {
     getTransactions,
     addNewBeneficiary,
     updateBeneficiaryByID,
-    getBeneficiaries
+    getBeneficiaries,
+    userProfile
 }
 module.exports = exportFunctions;

@@ -1,30 +1,36 @@
 const passport = require('passport');
-const { addAccountDetail, getAccountDetail, getBeneficiaries, addNewBeneficiary, getTransactions, addNewTransaction, getTransactionById} = require('../controllers/transactionControllers');
-transanctionRoutes = (app) => {
-    app.route('/account-details/:UserID')
+const transanctionRoutes = require('express').Router();
+const accountRoutes = require('express').Router();
+const { userProfile, addAccountDetail, getAccountDetail, getBeneficiaries, addNewBeneficiary, getTransactions, addNewTransaction, getTransactionById} = require('../controllers/transactionControllers');
+// const transanctionRoutes = (app) => {
+    transanctionRoutes.route('/user/profile')
+
+        .get(userProfile);
+
+    accountRoutes.route('/')
 
         .get(getAccountDetail)
 
         .put(addAccountDetail)
-
+    
         .post(addAccountDetail);
 
 
-    app.route('/benefiary/:UserID')
+    transanctionRoutes.route('/benefiary/:UserID')
         .get(getBeneficiaries)
 
         .post(addNewBeneficiary);
 
 
-    app.route('/transactions/:UserID')
+    transanctionRoutes.route('/')
 
         .get(getTransactions)
 
         .post(addNewTransaction);
 
 
-    app.route('/transactions/:UserID/:transactionID')
+    transanctionRoutes.route('/transactions/:UserID/:transactionID')
         .get(getTransactionById)
-} 
+// } 
 
-module.exports = {transanctionRoutes};
+module.exports = {transanctionRoutes, accountRoutes};

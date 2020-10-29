@@ -2,14 +2,17 @@ const express = require('express'),
     bodyParser = require("body-parser"),
     logger = require('morgan'),
     path = require('path'),
+    passport = require('passport'),
     session = require('cookie-session');
 
 const { authRoutes } = require('./src/routes/authRoutes');
-const { transanctionRoutes } = require('./src/routes/transactionRoutes')
+const {transanctionRoutes, accountRoutes} = require('./src/routes/transactionRoutes');
+
 
 const mongoose = require('mongoose');
 
 const app = express();
+const route = express();
 
 const port = 3605;
 
@@ -18,25 +21,9 @@ app.use(logger("dev"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// app.use(express.static("public"));
-// trust first proxy
-app.set('trust proxy', 1)
-
-// store user session data
-app.use(
-    session({
-        secret: 'secret',
-        resave: false,
-        saveUninitialized: true,
-        cookie: {
-            secureProxy: true,
-            httpOnly: true,
-            domain: 'cookie.com'
-        }
-    })
-);
-
+authRoutes(app);
+app.use('/transaction', passport.authenticate('jwt', { session: false }), transanctionRoutes);
+app.use('/account-details', passport.authenticate('jwt', { session: false }), accountRoutes);
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/ewalletdb', {
@@ -46,14 +33,14 @@ mongoose.connect('mongodb://localhost/ewalletdb', {
 
 
 app.get('/', (req, res) => {
-    res.json({
+    res.status(200).json({
         message: "Welcome to e-wallet-backend-api",
-        status: 200
-    })
+        });
+    console.log(req);
+
 });
 
-authRoutes(app);
-transanctionRoutes(app);
+// transanctionRoutes(app);
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
 
@@ -74,16 +61,16 @@ app.use((req, res, next) => {
 });
 
 // error handler
-// app.use((err, req, res, next) => {
-//     // set locals, only providing error in development
-//     res.locals.message = err.message;
-//     res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use((err, req, res, next) => {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-//     // return a 404 response
-//     res.status(err.status || 500).send({
-//         message: "Page can not be found!"
-//     })
-// })
+    // return a 404 response
+    res.status(err.status || 500).send({
+        message: "Page can not be found!"
+    })
+})
 
 // export the module
 module.exports = app;

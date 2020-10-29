@@ -1,4 +1,5 @@
-const LocalStrategy = require('passport-local').Strategy,
+const passport = require('passport'), 
+    LocalStrategy = require('passport-local').Strategy,
     JWTstrategy = require('passport-jwt').Strategy,
     ExtractJWT = require('passport-jwt').ExtractJwt,
     eWallet = require('../models/models');
@@ -17,6 +18,7 @@ passport.use(
                 if (!user) {
                     return done(null, false, { 'message': 'Email not found' })
                 }
+                
                 const validate = await user.isValidPassword(password);
 
                 if (!validate) {
@@ -33,7 +35,7 @@ passport.use(
     new JWTstrategy(
         {
             secretOrKey: 'TOP_SECRET',
-            jwtFromRequest: ExtractJWT.fromUrlQueryParameter('secret_token')
+            jwtFromRequest: ExtractJWT.fromUrlQueryParameter('api_token')
         },
         async (token, done) => {
             try {
