@@ -72,22 +72,6 @@ const addNewBeneficiary = (req, res) => { }
 const updateBeneficiaryByID = (req, res) => { }
 const getBeneficiaries = (req, res) => { }
 const getEnCryptionKeys = (req, res, next) => {
-    // let key = "FLWSECK-df67281c015c50187225f22f28abc0b6-X";
-    let text = {
-        "card_number":"5594410006029997",
-        "cvv":"885",
-        "expiry_month":"07",
-        "expiry_year":"21",
-        "currency":"NGN",
-        "amount":"200",
-        "fullname":"Gideon Amowogbaje",
-        "email":"amowogbajegideon@gmail.com",
-        "redirect_url":"https://webhook.site/3ed41e38-2c79-4c79-b455-97398730866c",
-        "authorization":{
-           "mode":"pin",
-           "pin":"1994"
-        }
-     }
     //  let key2 = forge.random.getBytesSync(16);
     //  let EncAlgorithm = "AES-CBC";
     //  let EncAlgorithm2 = "3DES-ECB";
