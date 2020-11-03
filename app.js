@@ -67,9 +67,9 @@ app.use((err, req, res, next) => {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
     // return a 404 response
-    res.status(err.status || 500).send({
-        message: "Page can not be found!"
-    })
+    // res.status(err.status || 500).send({
+    //     message: "Page can not be found!"
+    // })
 })
 
 // export the module

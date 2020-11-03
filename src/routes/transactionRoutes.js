@@ -1,7 +1,7 @@
 const passport = require('passport');
 const transanctionRoutes = require('express').Router();
 const accountRoutes = require('express').Router();
-const { userProfile, addAccountDetail, getAccountDetail, getBeneficiaries, addNewBeneficiary, getTransactions, addNewTransaction, getTransactionById} = require('../controllers/transactionControllers');
+const { userProfile, addAccountDetail, getAccountDetail, getBeneficiaries, addNewBeneficiary, getTransactions, addNewTransaction, getTransactionById, getEnCryptionKeys} = require('../controllers/transactionControllers');
 // const transanctionRoutes = (app) => {
     transanctionRoutes.route('/user/profile')
 
@@ -28,8 +28,11 @@ const { userProfile, addAccountDetail, getAccountDetail, getBeneficiaries, addNe
 
         .post(addNewTransaction);
 
+    transanctionRoutes.route('/enckeys')
 
-    transanctionRoutes.route('/transactions/:UserID/:transactionID')
+        .get(getEnCryptionKeys)
+
+    transanctionRoutes.route('/transactions/:transactionID')
         .get(getTransactionById)
 // } 
 
